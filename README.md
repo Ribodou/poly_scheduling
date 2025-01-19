@@ -7,6 +7,8 @@
 
 Poly scheduler is a program that lets you plan periodic dates between members of a group. It's time to ditch your google calendars.
 
+Implementation inspired by this paper: https://arxiv.org/abs/2403.00465 (difference: this program assumes a given period of a week).
+
 ## What does the program optimize?
 Assumptions:
 - Each relation involves two persons.
