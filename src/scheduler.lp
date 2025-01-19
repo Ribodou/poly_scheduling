@@ -1,5 +1,5 @@
 % Parameters
-day(0..dmax).      % dmax days in the period
+day(1..dmax).      % dmax days in the period
 
 % A meeting can happen on a day if two individuals are in a relationship
 { meet(I, J, D) } :- day(D), relation(I, J, _).
