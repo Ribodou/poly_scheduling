@@ -1,0 +1,22 @@
+names:
+  alex: Alex
+  beatix: Beatrice Tounette
+  claro: Claire
+  claire: Claire
+  daniii: Daniel Nilui
+relations:
+- - alex
+  - beatix
+  - 6
+- - alex
+  - claro
+  - 2
+- - claro
+  - beatix
+  - 3
+- - beatix
+  - daniii
+  - 7
+- - daniii
+  - claire
+  - 7
