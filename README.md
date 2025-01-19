@@ -7,7 +7,7 @@
 
 Poly scheduler is a program that lets you plan periodic dates between members of a group. It's time to ditch your google calendars.
 
-## What does the program optimise?
+## What does the program optimize?
 Assumptions:
 - Each relation involves two persons.
 - Each person can only have one date per day.
@@ -29,10 +29,10 @@ cargo build --release
 cargo run --release
 ```
 
-## Filling you own data
+## Filling your own data
 Each person should choose a unique short name. Then, replace the names in `data.yaml`. For each person, write the short unique name, followed by ":" and the full name. Multiple individuals can share the same full name, but the short name should be unique.
 
-Then, fill your relationsships: the two short names, then the weigth of the relationship.
+Then, fill in your relationships: the two short names, then the weight of the relationship.
 
 
 ## License
