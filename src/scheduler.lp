@@ -17,8 +17,8 @@ day(0..dmax).      % dmax days in the period
 waiting_time(I, J, WT) :- meet(I, J, D1), meet(I, J, D2), D1 < D2, relation(I, J, W), WT = (D2 - D1) * W.
 
 % Cyclic waiting time between the last meeting and the first meeting of the next period
-last_meeting(I, J, D) :- meet(I, J, D), not 1 { meet(I, J, D2) : D2 > D, day(D2) }.
-first_meeting(I, J, D) :- meet(I, J, D), not 1 { meet(I, J, D2) : D2 < D, day(D2) }.
+last_meeting(I, J, D) :- meet(I, J, D), D >= D': meet(I, J, D').
+first_meeting(I, J, D) :- meet(I, J, D), D <= D': meet(I, J, D').
 waiting_time(I, J, WT) :- last_meeting(I, J, D1), first_meeting(I, J, D2), relation(I, J, W), WT = (dmax - D1 + D2 + 1) * W.
 
 % find maximal weighted waiting time
