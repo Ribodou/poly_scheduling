@@ -9,10 +9,6 @@ occupied(J, I, D) :- date(I, J, D).
 { date(I, J, D) } :- day(D), relation(I, J, _).
 
 % Constraints
-% Ensure each individual dates at most one person per day
-{ date(I, J, D): relation(I, _, _)} :- relation(_, J, _), day(D).
-{ date(I, J, D): relation(_, J, _)} :- relation(I, _, _), day(D).
-
 % Ensure at least one date per relationship
 :- relation(I, J, _), not 1 { date(I, J, D) : day(D) }.
 
