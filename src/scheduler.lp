@@ -1,0 +1,29 @@
+% Parameters
+day(0..dmax).      % dmax days in the period
+
+% A meeting can happen on a day if two individuals are in a relationship
+{ meet(I, J, D) } :- day(D), relation(I, J, _).
+
+% Constraints
+% Ensure each individual meets at most one person per day
+{ meet(I, J, D): relation(I, _, _)} :- relation(_, J, _), day(D).
+{ meet(I, J, D): relation(_, J, _)} :- relation(I, _, _), day(D).
+
+% Ensure at least one meeting per relationship
+:- relation(I, J, _), not 1 { meet(I, J, D) : day(D) }.
+
+% Compute weighted waiting times
+% Waiting time between consecutive meetings
+waiting_time(I, J, WT) :- meet(I, J, D1), meet(I, J, D2), D1 < D2, relation(I, J, W), WT = (D2 - D1) * W.
+
+% Cyclic waiting time between the last meeting and the first meeting of the next period
+last_meeting(I, J, D) :- meet(I, J, D), not 1 { meet(I, J, D2) : D2 > D, day(D2) }.
+first_meeting(I, J, D) :- meet(I, J, D), not 1 { meet(I, J, D2) : D2 < D, day(D2) }.
+waiting_time(I, J, WT) :- last_meeting(I, J, D1), first_meeting(I, J, D2), relation(I, J, W), WT = (dmax - D1 + D2 + 1) * W.
+
+% Minimize maximum weighted waiting time
+#minimize { WT : waiting_time(I, J, WT) }.
+
+% Show the meetings
+#show.
+#show meet/3.
