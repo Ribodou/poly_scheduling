@@ -17,7 +17,7 @@ Assumptions:
 
 The weight of a relationship indicates how much each person in said relationship misses each other when they don't date. 
 
-The weighted wait is defined by (`time between two consecutive dates` \* `weight of relationship`). The program will minimize the largest weighted wait.
+The weighted wait is defined by (`time between two consecutive dates` \* `weight of relationship`). The program will minimize the largest weighted wait over a week.
 
 ## Install
 Installing `poly_scheduling` will install [`clingo`](https://github.com/potassco/clingo), so the first build might take some time.
