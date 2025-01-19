@@ -21,8 +21,11 @@ last_meeting(I, J, D) :- meet(I, J, D), not 1 { meet(I, J, D2) : D2 > D, day(D2)
 first_meeting(I, J, D) :- meet(I, J, D), not 1 { meet(I, J, D2) : D2 < D, day(D2) }.
 waiting_time(I, J, WT) :- last_meeting(I, J, D1), first_meeting(I, J, D2), relation(I, J, W), WT = (dmax - D1 + D2 + 1) * W.
 
+% find maximal weighted waiting time
+max_waiting_time(I, J, WT) :- waiting_time(I, J, WT), WT >= WT' : waiting_time(I, J, WT').
+
 % Minimize maximum weighted waiting time
-#minimize { WT : waiting_time(I, J, WT) }.
+#minimize { WT, I, J : max_waiting_time(I, J, WT) }.
 
 % Show the meetings
 #show.
